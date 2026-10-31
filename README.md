@@ -1,0 +1,2 @@
+# PrimalArmor
+修復FFXIV遊戲畫面上其他玩家的技能VFX特效與盔甲特效不匹配
