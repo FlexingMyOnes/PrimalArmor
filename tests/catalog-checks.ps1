@@ -110,6 +110,25 @@ try {
     Assert ([IO.Path]::IsPathRooted($variant.Files[$recipes.EmperorEffectPath])) 'Emperor alias did not resolve to a local file.'
     Assert ($variant.Files['vfx/eff/swap.avfx'] -eq 'vfx/eff/original.avfx') 'Game-path swap was not preserved.'
     Assert ($variant.CacheKey -eq ('MNK:' + $variant.Option)) 'Cache key is not job/option based.'
+    $automatic = $catalog.LoadAsync($config, '   ', [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert ($automatic.ModRoot -eq [IO.Path]::GetFullPath($mods)) 'A blank override should retain automatic mod detection.'
+    $quotedRoot = '  "' + $mods + '"  '
+    $manual = $catalog.LoadAsync($config, $quotedRoot, [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert ($manual.ModRoot -eq [IO.Path]::GetFullPath($mods)) 'Surrounding quotes and spaces should be removed from a manual root.'
+    Assert (@($manual.Jobs.Values | ForEach-Object { $_.Variants.Values } | Where-Object Available).Count -eq 144) 'A valid manual root should resolve all selections.'
+    $missingManual = $catalog.LoadAsync($config, (Join-Path $fixture 'missing-mods'), [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert (@($missingManual.Issues | Where-Object Code -eq 'ModDirectoryMissing').Count -eq 1) 'A nonexistent manual root should be reported.'
+    Assert (@($missingManual.Jobs.Values | Where-Object Available).Count -eq 0) 'An invalid manual root must not silently fall back to the automatic root.'
+    $relativeManual = $catalog.LoadAsync($config, 'relative-mods', [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert (@($relativeManual.Issues | Where-Object Code -eq 'ModDirectoryInvalid').Count -eq 1) 'A relative manual root must be rejected.'
+    $invalidManual = $catalog.LoadAsync($config, ("bad" + [char]0 + "path"), [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert (@($invalidManual.Issues | Where-Object Code -eq 'ModDirectoryInvalid').Count -eq 1) 'An invalid path should produce a diagnostic instead of throwing.'
+    Remove-Item -LiteralPath (Join-Path $config 'Penumbra.json')
+    $withoutConfig = $catalog.LoadAsync($config, $mods, [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert (@($withoutConfig.Jobs.Values | ForEach-Object { $_.Variants.Values } | Where-Object Available).Count -eq 144) 'A manual root should work without Penumbra.json.'
+    Assert (@($withoutConfig.Issues | Where-Object Code -eq 'PenumbraConfig').Count -eq 0) 'Manual mode should not attempt to read Penumbra.json.'
+    Write-Json (Join-Path $config 'Penumbra.json') @{ ModDirectory = $mods }
+    $null = $catalog.LoadAsync($config, $mods, [Threading.CancellationToken]::None).GetAwaiter().GetResult()
     $collections = Join-Path $config 'Penumbra\collections'
     $parentId = [guid]::NewGuid()
     $childId = [guid]::NewGuid()

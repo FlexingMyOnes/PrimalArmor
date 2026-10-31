@@ -12,5 +12,6 @@ public sealed class Configuration : IPluginConfiguration
     public float MaxDistance { get; set; } = 40;
     public int MaxPlayers { get; set; } = 40;
     public int ProcessIntervalMs { get; set; } = 150;
+    public string ModDirectoryOverride { get; set; } = string.Empty;
     public HashSet<uint> EnabledJobs { get; set; } = new() {20,22,25,33,35,39,40,41};
 }

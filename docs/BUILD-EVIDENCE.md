@@ -12,7 +12,7 @@ Date: 2026-10-31
 | Build result | Success; zero compile errors and zero warnings |
 | Bundled recipes | `PrimalArmor.assets.recipes.json` embedded by both SDK and Roslyn builds |
 | Memory-loaded release DLL | Empty `Assembly.Location`; embedded recipes match source; read-only local scan found 8 jobs and 144 available selections |
-| Regression checks | 32 catalog checks, 353 engine assertions, 29 installed-provider metadata checks passed |
+| Regression checks | 41 catalog checks, 353 engine assertions, 29 installed-provider metadata checks passed |
 | Framework assembly references in DLL | `System.Private.CoreLib`, `System.Text.Json`, `System.IO.Compression`, `System.Linq`, `System.Text.RegularExpressions`: all `9.0.0.0` |
 | Direct game/plugin dependencies in DLL | `Dalamud`, `Dalamud.Bindings.ImGui`, `Lumina`, `Lumina.Excel` |
 | .NET 10 references in DLL | None |

@@ -46,6 +46,8 @@ public sealed class Plugin : IDalamudPlugin
     private Scene cachedScene=Scene.Empty;
     private string status="準備掃描模組…";
     private string lastError="";
+    private string modDirectoryDraft="";
+    private static readonly string PluginVersion=typeof(Plugin).Assembly.GetName().Version?.ToString()??"unknown";
     private Stats stats = new(0,0,0,0,0);
     private readonly Stopwatch clock=Stopwatch.StartNew();
 
@@ -57,6 +59,7 @@ public sealed class Plugin : IDalamudPlugin
         try { config=pi.GetPluginConfig() as Configuration ?? new Configuration(); }
         catch { config=new Configuration(); }
         config.EnabledJobs ??= new HashSet<uint>{20,22,25,33,35,39,40,41};
+        modDirectoryDraft=config.ModDirectoryOverride??string.Empty;
         pluginConfigs=Path.GetDirectoryName(pi.GetPluginConfigDirectory())
             ?? throw new InvalidOperationException("無法找到插件設定資料夾");
         ipc=new IpcBridge(pi,framework);
@@ -94,7 +97,7 @@ public sealed class Plugin : IDalamudPlugin
         catalogService=new ModCatalog();
         catalog=null;
         lastError="";
-        scanTask=catalogService.LoadAsync(pluginConfigs,scanCancellation.Token);
+        scanTask=catalogService.LoadAsync(pluginConfigs,config.ModDirectoryOverride,scanCancellation.Token);
         status="正在背景掃描已安裝模組…";
     }
     private void StopEngine()
@@ -139,6 +142,7 @@ public sealed class Plugin : IDalamudPlugin
                 if(!loggedIn){status="等待登入";UpdateStats();return;}
                 if(!sessionAllowed){status="等待本次手動啟動";UpdateStats();return;}
                 if(catalog is null || catalogService is null || clock.ElapsedMilliseconds<readyAfter){UpdateStats();return;}
+                if(!catalog.Jobs.Values.Any(j=>j.Available)){status="未找到可用的 Primal 模組，請檢查掃描目錄與診斷資訊";UpdateStats();return;}
                 if(!ipc.TryConnect(out var why)){status=why;UpdateStats();return;}
                 engine ??= new ArmorEngine(ipc,catalog,catalogService.GetCandidatePathSnapshotAsync,
                     metadata.Clear,FindCurrent,Report);
@@ -201,7 +205,7 @@ public sealed class Plugin : IDalamudPlugin
         lock(gate)
         {
             if(disposed){ImGui.End();return;}
-            ImGui.TextWrapped("台服 7.25 / Dalamud API 13 · 僅改變自己畫面中的其他玩家");
+            ImGui.TextWrapped($"版本 {PluginVersion} · 台服 7.25 / Dalamud API 13 · 僅改變自己畫面中的其他玩家");
             ImGui.TextWrapped("首次使用請先停止舊版 SND 的 Primal Armor Auto，避免重複套用。");
             var enabled=config.Enabled;
             if(ImGui.Checkbox("啟用盔甲特效",ref enabled)){config.Enabled=enabled;manualStart=enabled;Save();}
@@ -228,8 +232,22 @@ public sealed class Plugin : IDalamudPlugin
             }
             if(ImGui.CollapsingHeader("已安裝的 Primal 模組",ImGuiTreeNodeFlags.DefaultOpen))
             {
-                if(ImGui.Button("重新偵測模組並重建設定"))requestScan=true;
+                ImGui.TextUnformatted("Penumbra 模組根目錄（選填）");
+                ImGui.SetNextItemWidth(-1);
+                ImGui.InputTextWithHint("##ModDirectory", "留空自動偵測；也可貼上模組資料夾的完整路徑", ref modDirectoryDraft, 2048);
+                ImGui.TextWrapped("請選包含各模組子資料夾的總目錄；輸入後按下方按鈕套用。");
+                if(ImGui.Button("重新偵測模組並重建設定"))
+                {
+                    config.ModDirectoryOverride=modDirectoryDraft.Trim().Trim('"').Trim();Save();requestScan=true;
+                }
+                ImGui.SameLine();
+                if(ImGui.Button("恢復自動偵測"))
+                {
+                    modDirectoryDraft="";config.ModDirectoryOverride="";Save();requestScan=true;
+                }
                 if(catalog is not null)
+                {
+                    if(!string.IsNullOrWhiteSpace(catalog.ModRoot))ImGui.TextWrapped("目前掃描目錄："+catalog.ModRoot);
                     foreach(var job in catalog.Jobs.Values.OrderBy(j=>j.JobId))
                     {
                         var selected=config.EnabledJobs.Contains(job.JobId);
@@ -241,6 +259,7 @@ public sealed class Plugin : IDalamudPlugin
                         ImGui.SameLine();
                         ImGui.TextUnformatted(job.Available ? $"可用 {job.Variants.Values.Count(v=>v.Available)}/18" : "未找到相容封包");
                     }
+                }
             }
             if(ImGui.CollapsingHeader("診斷資訊"))
             {

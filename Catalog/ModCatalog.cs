@@ -27,7 +27,11 @@ public sealed class ModCatalog
 
     /// <param name="pluginConfigsDir">Parent of the plugin's own config directory.</param>
     public Task<CatalogSnapshot> LoadAsync(string pluginConfigsDir, CancellationToken ct = default)
-        => Task.Run(() => Load(pluginConfigsDir, ct), ct);
+        => LoadAsync(pluginConfigsDir, null, ct);
+
+    /// <param name="modDirectoryOverride">Optional absolute mod root; blank uses Penumbra's configured directory.</param>
+    public Task<CatalogSnapshot> LoadAsync(string pluginConfigsDir, string? modDirectoryOverride, CancellationToken ct = default)
+        => Task.Run(() => Load(pluginConfigsDir, modDirectoryOverride, ct), ct);
 
     public async Task<IReadOnlySet<string>> GetCandidatePaths(Guid collectionId, CancellationToken ct = default)
         => (await GetCandidatePathSnapshotAsync(collectionId, ct).ConfigureAwait(false)).Paths;
@@ -39,7 +43,7 @@ public sealed class ModCatalog
         return Task.Run(() => GetCandidates(current, collectionId, ct), ct);
     }
 
-    private CatalogSnapshot Load(string pluginConfigsDir, CancellationToken ct)
+    private CatalogSnapshot Load(string pluginConfigsDir, string? modDirectoryOverride, CancellationToken ct)
     {
         var issues = new List<CatalogIssue>();
         var recipes = ReadRecipes(issues);
@@ -51,11 +55,38 @@ public sealed class ModCatalog
         var whitelist = new HashSet<string>(StringComparer.Ordinal);
         var carriers = new HashSet<string>(Paths);
         var modRoot = string.Empty;
-        var configPath = Path.Combine(pluginConfigsDir, "Penumbra.json");
-        using (var config = ReadJson(configPath, issues, "PenumbraConfig"))
+        var manualDirectory = !string.IsNullOrWhiteSpace(modDirectoryOverride);
+        if (manualDirectory)
         {
-            if (config is not null)
-                modRoot = Text(config.RootElement, "ModDirectory");
+            modRoot = modDirectoryOverride!.Trim();
+            if (modRoot.Length >= 2 && ((modRoot[0] == '"' && modRoot[^1] == '"')
+                || (modRoot[0] == '\'' && modRoot[^1] == '\'')))
+                modRoot = modRoot[1..^1].Trim();
+        }
+        else
+        {
+            var configPath = Path.Combine(pluginConfigsDir, "Penumbra.json");
+            using var config = ReadJson(configPath, issues, "PenumbraConfig");
+            if (config is not null) modRoot = Text(config.RootElement, "ModDirectory");
+        }
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(modRoot))
+            {
+                if (!Path.IsPathFullyQualified(modRoot))
+                    throw new ArgumentException("The mod directory must be an absolute path.");
+                modRoot = Path.GetFullPath(modRoot);
+            }
+            else if (manualDirectory)
+                throw new ArgumentException("The selected mod directory is empty.");
+        }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException)
+        {
+            issues.Add(new("ModDirectoryInvalid", $"Penumbra's mod directory is invalid: {ex.Message}",
+                CatalogIssueSeverity.Error, Path: modRoot));
+            AddMissingJobs(recipes, jobs, issues);
+            Volatile.Write(ref location, new LoadLocation(pluginConfigsDir, string.Empty));
+            return Snapshot();
         }
         if (string.IsNullOrWhiteSpace(modRoot) || !Directory.Exists(modRoot))
         {
@@ -65,7 +96,6 @@ public sealed class ModCatalog
             Volatile.Write(ref location, new LoadLocation(pluginConfigsDir, string.Empty));
             return Snapshot();
         }
-        modRoot = Path.GetFullPath(modRoot);
         var installed = new List<InstalledMod>();
         foreach (var directory in EnumerateDirectories(modRoot, issues))
         {
