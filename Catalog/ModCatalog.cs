@@ -300,7 +300,8 @@ public sealed class ModCatalog
                 throw new InvalidDataException("Recipe jobs are missing.");
             return recipes;
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException or InvalidDataException)
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException or InvalidDataException
+            or ArgumentException or NotSupportedException)
         {
             issues.Add(new("RecipesUnreadable", $"Bundled matching recipes could not be read: {ex.Message}", CatalogIssueSeverity.Error));
             return new();
@@ -311,8 +312,17 @@ public sealed class ModCatalog
     {
         var assembly = typeof(ModCatalog).Assembly;
         var resource = assembly.GetManifestResourceNames().FirstOrDefault(n => n.EndsWith(".recipes.json", StringComparison.OrdinalIgnoreCase));
-        return resource is not null ? assembly.GetManifestResourceStream(resource)!
-            : File.OpenRead(Path.Combine(Path.GetDirectoryName(assembly.Location)!, "assets", "recipes.json"));
+        if (resource is not null)
+            return assembly.GetManifestResourceStream(resource)
+                ?? throw new InvalidDataException("The embedded matching recipes could not be opened. Reinstall the plugin package.");
+
+        // Dalamud can load assemblies from bytes, in which case Location is empty.
+        // Such assemblies must contain the recipes; process/current directories do
+        // not identify the plugin installation and must not be used as a fallback.
+        var directory = Path.GetDirectoryName(assembly.Location);
+        if (string.IsNullOrWhiteSpace(directory))
+            throw new FileNotFoundException("Matching recipes are not embedded and the plugin assembly has no file location. Reinstall the current plugin package.");
+        return File.OpenRead(Path.Combine(directory, "assets", "recipes.json"));
     }
 
     private static void AddMissingJobs(RecipeDocument recipes, Dictionary<uint, JobCatalog> jobs, List<CatalogIssue> issues)

@@ -12,7 +12,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $projectRoot = $PSScriptRoot
 $assemblyName = 'PrimalArmor'
-$version = '0.1.0.0'
+$version = '0.1.0.1'
 
 function Get-LatestVersionDirectory([string] $ParentPath) {
     if (!(Test-Path -LiteralPath $ParentPath -PathType Container)) { return $null }
@@ -34,7 +34,7 @@ if (!$DalamudLibPath -or !(Test-Path -LiteralPath (Join-Path $DalamudLibPath 'Da
 }
 $DalamudLibPath = (Resolve-Path -LiteralPath $DalamudLibPath).Path
 $dalamudIdentity = [Reflection.AssemblyName]::GetAssemblyName((Join-Path $DalamudLibPath 'Dalamud.dll'))
-if ($dalamudIdentity.Version.Major -ne 13) { throw 'Primal Armor 0.1.0.0 requires Dalamud API 13 libraries.' }
+if ($dalamudIdentity.Version.Major -ne 13) { throw 'Primal Armor requires Dalamud API 13 libraries.' }
 
 $dotnet = Get-Command dotnet -ErrorAction SilentlyContinue
 $sdkInstalled = $false
@@ -127,9 +127,15 @@ global using System.Threading.Tasks;
         WithNullableContextOptions([Microsoft.CodeAnalysis.NullableContextOptions]::Enable).
         WithDeterministic($true)
     $compilation = [Microsoft.CodeAnalysis.CSharp.CSharpCompilation]::Create($assemblyName, $trees, $references, $options)
+    # Dalamud can load the DLL from memory, so Assembly.Location cannot locate
+    # sidecar files. Match the SDK EmbeddedResource item in the fallback build.
+    $embeddedRecipePath = Join-Path $projectRoot 'assets\recipes.json'
+    $resourceProvider = [Func[IO.Stream]]({ [IO.File]::OpenRead($embeddedRecipePath) }.GetNewClosure())
+    $resources = [Collections.Generic.List[Microsoft.CodeAnalysis.ResourceDescription]]::new()
+    $resources.Add([Microsoft.CodeAnalysis.ResourceDescription]::new('PrimalArmor.assets.recipes.json', $resourceProvider, $false))
     $outputPath = Join-Path $OutputDirectory "$assemblyName.dll"
     $stream = [IO.File]::Create($outputPath)
-    try { $result = $compilation.Emit($stream) } finally { $stream.Dispose() }
+    try { $result = $compilation.Emit($stream, $null, $null, $null, $resources) } finally { $stream.Dispose() }
     foreach ($diagnostic in $result.Diagnostics) {
         if ($diagnostic.Severity -in @([Microsoft.CodeAnalysis.DiagnosticSeverity]::Error, [Microsoft.CodeAnalysis.DiagnosticSeverity]::Warning)) {
             Write-Host $diagnostic.ToString()

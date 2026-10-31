@@ -36,12 +36,26 @@ try {
     $options = [Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions]::new([Microsoft.CodeAnalysis.OutputKind]::DynamicallyLinkedLibrary).
         WithNullableContextOptions([Microsoft.CodeAnalysis.NullableContextOptions]::Enable)
     $compilation = [Microsoft.CodeAnalysis.CSharp.CSharpCompilation]::Create('PrimalArmor.CatalogChecks', $trees, $references, $options)
+    $recipePath = Join-Path $project 'assets\recipes.json'
+    $resourceStream = [Func[IO.Stream]]{ [IO.File]::OpenRead($recipePath) }
+    $resources = [System.Collections.Generic.List[Microsoft.CodeAnalysis.ResourceDescription]]::new()
+    $resources.Add([Microsoft.CodeAnalysis.ResourceDescription]::new('PrimalArmor.assets.recipes.json', $resourceStream, $true))
     $assemblyPath = Join-Path $fixture 'CatalogChecks.dll'
     $stream = [IO.File]::Create($assemblyPath)
-    try { $compiled = $compilation.Emit($stream) } finally { $stream.Dispose() }
+    try { $compiled = $compilation.Emit($stream, $null, $null, $null, $resources) } finally { $stream.Dispose() }
     if (!$compiled.Success) { throw ($compiled.Diagnostics -join [Environment]::NewLine) }
-    [Reflection.Assembly]::Load([IO.File]::ReadAllBytes($assemblyPath)) | Out-Null
-    $recipePath = Join-Path $project 'assets\recipes.json'
+    $loadedAssembly = [Reflection.Assembly]::Load([IO.File]::ReadAllBytes($assemblyPath))
+    Assert ([string]::IsNullOrEmpty($loadedAssembly.Location)) 'The bundled recipe regression must load the assembly from bytes.'
+    Assert ($loadedAssembly.GetManifestResourceNames() -contains 'PrimalArmor.assets.recipes.json') 'The bundled recipe resource is missing.'
+    $withoutResources = $compilation.WithAssemblyName('PrimalArmor.CatalogChecks.WithoutResources')
+    $memory = [IO.MemoryStream]::new()
+    try {
+        $unbundledCompiled = $withoutResources.Emit($memory)
+        if (!$unbundledCompiled.Success) { throw ($unbundledCompiled.Diagnostics -join [Environment]::NewLine) }
+        $unbundledAssembly = [Reflection.Assembly]::Load($memory.ToArray())
+    } finally { $memory.Dispose() }
+    $unbundledType = $unbundledAssembly.GetType('PrimalArmor.Catalog.ModCatalog', $true)
+    $unbundledCatalog = $unbundledType.GetConstructor(@([string])).Invoke([object[]]@($null))
     $recipes = Get-Content -Raw -LiteralPath $recipePath | ConvertFrom-Json
     Assert ($recipes.Jobs.Count -eq 8) 'Expected eight public recipe jobs.'
     Assert (($recipes.Jobs.Races | Measure-Object).Count -eq 144) 'Expected 144 race/sex selections.'
@@ -49,6 +63,11 @@ try {
     $mods = Join-Path $fixture 'mods'
     $config = Join-Path $fixture 'pluginConfigs'
     Write-Json (Join-Path $config 'Penumbra.json') @{ ModDirectory = $mods }
+    $unbundledTask = $unbundledCatalog.LoadAsync($config, [Threading.CancellationToken]::None)
+    $unbundledSnapshot = $unbundledTask.GetAwaiter().GetResult()
+    Assert ([string]::IsNullOrEmpty($unbundledAssembly.Location)) 'The missing resource regression must have no assembly location.'
+    Assert (@($unbundledSnapshot.Issues | Where-Object Code -eq 'RecipesUnreadable').Count -eq 1) 'Missing bundled recipes should produce a diagnostic instead of a null path exception.'
+    Assert (($unbundledSnapshot.Issues | Where-Object Code -eq 'RecipesUnreadable').Message.Contains('Reinstall')) 'The missing recipe diagnostic should explain how to recover.'
     foreach ($job in $recipes.Jobs) {
         $mod = Join-Path $mods ('Source ' + $job.JobTag)
         New-Item -ItemType Directory -Force -Path $mod | Out-Null
@@ -75,6 +94,11 @@ try {
     } }) }
     $catalog = [PrimalArmor.Catalog.ModCatalog]::new($recipePath)
     $snapshot = $catalog.LoadAsync($config, [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    $bundledCatalog = [PrimalArmor.Catalog.ModCatalog]::new()
+    $bundledSnapshot = $bundledCatalog.LoadAsync($config, [Threading.CancellationToken]::None).GetAwaiter().GetResult()
+    Assert ($bundledSnapshot.Jobs.Count -eq 8) 'A byte-loaded plugin should discover all jobs from embedded recipes.'
+    Assert (@($bundledSnapshot.Jobs.Values | ForEach-Object { $_.Variants.Values } | Where-Object Available).Count -eq 144) 'Embedded recipes should resolve all 144 fixture selections without an explicit file path.'
+    Assert (@($bundledSnapshot.Issues | Where-Object Code -eq 'RecipesUnreadable').Count -eq 0) 'Embedded recipes unexpectedly fell back to a file path.'
     Assert ($snapshot.Jobs.Count -eq 8) 'Catalog lost a job.'
     $variants = @($snapshot.Jobs.Values | ForEach-Object { $_.Variants.Values })
     Assert ($variants.Count -eq 144) 'Catalog did not load all race/sex mappings.'

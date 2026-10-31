@@ -4,12 +4,15 @@ Date: 2026-10-31
 
 | Check | Result |
 | --- | --- |
-| Assembly | `PrimalArmor`, version `0.1.0.0` |
+| Assembly | `PrimalArmor`, version `0.1.0.1` |
 | Target | Windows, `.NETCoreApp,Version=v9.0` |
 | Dalamud library | API 13, assembly `13.0.0.16` |
 | Compiler | Local Roslyn `5.0.0.0` hosted by PowerShell 7.6.5 |
 | Framework references | Existing launcher .NET 9.0.11 runtime assemblies |
 | Build result | Success; zero compile errors and zero warnings |
+| Bundled recipes | `PrimalArmor.assets.recipes.json` embedded by both SDK and Roslyn builds |
+| Memory-loaded release DLL | Empty `Assembly.Location`; embedded recipes match source; read-only local scan found 8 jobs and 144 available selections |
+| Regression checks | 32 catalog checks, 353 engine assertions, 29 installed-provider metadata checks passed |
 | Framework assembly references in DLL | `System.Private.CoreLib`, `System.Text.Json`, `System.IO.Compression`, `System.Linq`, `System.Text.RegularExpressions`: all `9.0.0.0` |
 | Direct game/plugin dependencies in DLL | `Dalamud`, `Dalamud.Bindings.ImGui`, `Lumina`, `Lumina.Excel` |
 | .NET 10 references in DLL | None |

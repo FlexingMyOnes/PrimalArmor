@@ -3,7 +3,7 @@
     "Author": "Primal Armor contributors",
     "Name": "Primal Armor",
     "InternalName": "PrimalArmor",
-    "AssemblyVersion": "0.1.0.0",
+    "AssemblyVersion": "0.1.0.1",
     "Description": "Matches nearby players' Primal armor VFX to their jobs in your local view. For TW 7.25 and Dalamud API 13. Requires Penumbra, Glamourer, and your own compatible Primal assets; detects installed assets automatically.",
     "Punchline": "Match nearby players' Primal armor VFX to their jobs.",
     "ApplicableVersion": "any",
@@ -19,9 +19,9 @@
       "glamourer"
     ],
     "RepoUrl": "https://github.com/FlexingMyOnes/PrimalArmor",
-    "DownloadLinkInstall": "https://github.com/FlexingMyOnes/PrimalArmor/releases/download/v0.1.0-alpha.1/PrimalArmor-0.1.0.0.zip",
-    "DownloadLinkUpdate": "https://github.com/FlexingMyOnes/PrimalArmor/releases/download/v0.1.0-alpha.1/PrimalArmor-0.1.0.0.zip",
+    "DownloadLinkInstall": "https://github.com/FlexingMyOnes/PrimalArmor/releases/download/v0.1.0-alpha.2/PrimalArmor-0.1.0.1.zip",
+    "DownloadLinkUpdate": "https://github.com/FlexingMyOnes/PrimalArmor/releases/download/v0.1.0-alpha.2/PrimalArmor-0.1.0.1.zip",
     "IsTestingExclusive": false,
-    "LastUpdate": 1793456960
+    "LastUpdate": 1793458468
   }
 ]
