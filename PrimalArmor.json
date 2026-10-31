@@ -1,0 +1,14 @@
+{
+  "Author": "Primal Armor contributors",
+  "Name": "Primal Armor",
+  "InternalName": "PrimalArmor",
+  "AssemblyVersion": "0.1.0.0",
+  "Description": "Matches nearby players' Primal armor VFX to their jobs in your local view. For TW 7.25 and Dalamud API 13. Requires Penumbra, Glamourer, and your own compatible Primal assets; detects installed assets automatically.",
+  "Punchline": "Match nearby players' Primal armor VFX to their jobs.",
+  "ApplicableVersion": "any",
+  "DalamudApiLevel": 13,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "Tags": ["appearance", "armor", "glamour", "penumbra", "glamourer"]
+}

@@ -1,0 +1,782 @@
+{
+  "Version": 1,
+  "EmperorEffectPath": "chara/equipment/e0279/vfx/eff/ve0001.avfx",
+  "Jobs": [
+    {
+      "JobTag": "MNK",
+      "JobId": 20,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "[♂]Midlander-Miqo'te-Viera",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "[♀]Au Ra-Miqo'te-Midlander",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "[♂]Highlander-Elezen-Au Ra",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "[♀]Highlander-Elezen-Viera",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "[♂]Highlander-Elezen-Au Ra",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "[♀]Highlander-Elezen-Viera",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "[♂]Midlander-Miqo'te-Viera",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "[♀]Au Ra-Miqo'te-Midlander",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "[♂]Roegadyn",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "[♀]Roegadyn",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "[♂]Highlander-Elezen-Au Ra",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "[♀]Au Ra-Miqo'te-Midlander",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "[♂]Hrothgar",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "[♀]Hrothgar",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "[♂]Midlander-Miqo'te-Viera",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "[♀]Highlander-Elezen-Viera",
+          "SourceEffectGamePath": "chara/equipment/e0188/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "DRG",
+      "JobId": 22,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Hrothgar Male 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Others 2",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "BLM",
+      "JobId": 25,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Lalafells v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Lalafells v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Roegadyn-Hrothgar Males v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Roegadyn-Hrothgar Males v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Others v2",
+          "SourceEffectGamePath": "chara/equipment/e0191/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "AST",
+      "JobId": 33,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Roegadyn Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Hrothgar Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "RDM",
+      "JobId": 35,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Vieras-Miqo'te or Midlander Males-Highlander or Elezen Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Midlander-Au Ra-Miqo'te Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Vieras-Miqo'te or Midlander Males-Highlander or Elezen Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Vieras-Miqo'te or Midlander Males-Highlander or Elezen Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Vieras-Miqo'te or Midlander Males-Highlander or Elezen Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Midlander-Au Ra-Miqo'te Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Roegadyn Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Midlander-Au Ra-Miqo'te Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Hrothgar Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Others",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Vieras-Miqo'te or Midlander Males-Highlander or Elezen Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Vieras-Miqo'te or Midlander Males-Highlander or Elezen Females",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "RPR",
+      "JobId": 39,
+      "Group": "Alt Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Midlander Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Others Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Highlander-Elezen Males",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Others Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Highlander-Elezen Males",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Others Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Miqo'te Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Miqo'te Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Roegadyn Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Roegadyn Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Au Ra Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Au Ra Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Hrothgar Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Others Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Viera Male",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Others Female",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "SGE",
+      "JobId": 40,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Others Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Others Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Others Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Lalafells 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Lalafells 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Others Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Roegadyn Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Au Ra Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Hrothgar Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Others Male 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Others Female 1b",
+          "SourceEffectGamePath": "chara/equipment/e0279/vfx/eff/ve0001.avfx"
+        }
+      ]
+    },
+    {
+      "JobTag": "VPR",
+      "JobId": 41,
+      "Group": "Gear VFX",
+      "Races": [
+        {
+          "RaceSex": "MidlanderMale",
+          "Option": "Midlanders",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MidlanderFemale",
+          "Option": "Midlanders",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderMale",
+          "Option": "Highlanders",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HighlanderFemale",
+          "Option": "Highlanders",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenMale",
+          "Option": "Elezens",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "ElezenFemale",
+          "Option": "Elezens",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellMale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "LalafellFemale",
+          "Option": "Lalafells",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteMale",
+          "Option": "Miqo'te Male",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "MiqoteFemale",
+          "Option": "Au Ra-Miqo'te Females",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynMale",
+          "Option": "Roegadyn Male",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "RoegadynFemale",
+          "Option": "Roegadyn Female",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaMale",
+          "Option": "Au Ra Male",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "AuRaFemale",
+          "Option": "Au Ra-Miqo'te Females",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarMale",
+          "Option": "Hrothgar Male",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "HrothgarFemale",
+          "Option": "Hrothgar Female",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraMale",
+          "Option": "Viera Male",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        },
+        {
+          "RaceSex": "VieraFemale",
+          "Option": "Viera Female",
+          "SourceEffectGamePath": "chara/equipment/e0709/vfx/eff/ve0001.avfx"
+        }
+      ]
+    }
+  ]
+}
